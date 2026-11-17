@@ -1,0 +1,26 @@
+.sidebar { position: sticky; top: 0; display: flex; width: 225px; height: 100vh; flex: 0 0 225px; flex-direction: column; background: #154da3; color: #fff; }
+.brand { display: flex; height: 73px; align-items: center; gap: 10px; padding: 0 21px; border-bottom: 1px solid rgba(255,255,255,.13); color: #fff; font-size: 1rem; font-weight: 750; text-decoration: none; }
+.brand-mark { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 4px; background: #38a0e9; color: #fff; font-size: .9rem; }
+.side-nav { display: grid; gap: 3px; padding: 16px 12px; }
+.nav-link { display: flex; min-height: 40px; align-items: center; gap: 12px; padding: 0 12px; border-radius: 4px; color: rgba(255,255,255,.76); font-weight: 600; text-decoration: none; }
+a.nav-link:hover, .nav-link.active { background: #2175cb; color: #fff; }
+.nav-link.active { box-shadow: inset 3px 0 0 #9bd2ff; }
+.nav-icon { width: 17px; color: #b9d7f5; font-size: 1rem; text-align: center; }
+.nav-disabled { cursor: default; opacity: .72; }
+.sidebar-account { display: flex; flex-direction: column; gap: 5px; margin-top: auto; padding: 20px 24px 16px; border-top: 1px solid rgba(255,255,255,.13); color: #fff; font-size: .82rem; }
+.sidebar-account strong { font-size: .8rem; }
+.account-role { width: fit-content; padding: 1px 8px; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; color: #d4e7fb; font-size: .75rem; }
+.logout-link { display: flex; align-items: center; gap: 8px; margin-top: 12px; color: rgba(255,255,255,.7); text-decoration: none; }
+.logout-link:hover { color: #fff; }
+@media (max-width: 720px) {
+	.app-shell { flex-direction: column; }
+	.sidebar { position: relative; width: 100%; height: auto; flex: none; }
+	.brand { height: 58px; }
+	.side-nav { display: flex; overflow-x: auto; gap: 4px; padding: 8px 10px; }
+	.nav-link { flex: 0 0 auto; min-height: 36px; padding: 0 10px; font-size: .82rem; }
+	.nav-icon { display: none; }
+	.sidebar-account { position: absolute; top: 0; right: 8px; height: 58px; flex-direction: row; align-items: center; gap: 8px; padding: 0 10px; border: 0; }
+	.sidebar-account strong, .sidebar-account .account-role { display: none; }
+	.logout-link { margin: 0; font-size: .8rem; }
+}
+@media (max-width: 420px) { .nav-link { padding: 0 7px; font-size: .75rem; } .logout-link { font-size: 0; } .logout-link span { font-size: 1rem; } }

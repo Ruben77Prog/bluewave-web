@@ -1,0 +1,35 @@
+:root {
+	color-scheme: light;
+	--page: #f4f7fb;
+	--surface: #fff;
+	--ink: #172b45;
+	--muted: #637890;
+	--line: #dce5ef;
+	--brand: #154da3;
+	--brand-light: #1b78d0;
+	--focus: rgba(27, 120, 208, .2);
+	--radius: 5px;
+}
+* { box-sizing: border-box; }
+html { min-width: 320px; background: var(--page); }
+body { margin: 0; background: var(--page); color: var(--ink); font: 14px/1.5 Inter, "Segoe UI", Roboto, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin-top: 0; }
+a { color: var(--brand-light); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.app-shell { display: flex; min-height: 100vh; }
+.main-shell { display: flex; min-width: 0; flex: 1; flex-direction: column; }
+.container { width: min(1104px, calc(100% - 64px)); flex: 1; margin: 36px auto 48px; }
+.page-title { margin: 0 0 28px; }
+.page-title h1 { margin: 0 0 5px; color: var(--ink); font-size: 1.75rem; line-height: 1.25; }
+.page-title p { margin: 0; color: var(--muted); }
+.btn { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; gap: 8px; padding: 8px 15px; border: 1px solid transparent; border-radius: 4px; background: var(--brand-light); color: #fff; font: inherit; font-weight: 650; text-decoration: none; cursor: pointer; transition: background .15s ease; }
+.btn:hover { background: var(--brand); }
+.error-message, .success-message { margin: 0 0 16px; padding: 12px 14px; border: 1px solid; border-radius: var(--radius); }
+.error-message { border-color: #f0c5c1; background: #fff4f2; color: #9b3029; }
+.success-message { border-color: #b8dfcc; background: #effaf4; color: #216b4a; }
+.footer { padding: 12px 32px; color: #8191a4; font-size: .8rem; }
+.footer span { display: block; max-width: 1104px; margin: 0 auto; }
+.auth-page .sidebar { display: none; }
+.auth-page .container { width: min(520px, calc(100% - 36px)); margin: auto; padding: 52px 0; }
+.auth-page .footer { display: none; }
+@media (max-width: 700px) { .container { width: calc(100% - 32px); margin: 26px auto 36px; } }

@@ -5,17 +5,18 @@
 <%
 Results<IncidenciaDTO> results = (Results<IncidenciaDTO>) request.getAttribute("results");
 String error = (String) request.getAttribute("error");
+boolean esAdmin = Boolean.TRUE.equals(request.getAttribute("admin"));
 %>
 <section class="incidencias-page">
 	<div class="incidencias-heading">
 		<div>
 			<h1>Incidencias</h1>
-			<p><%=results == null ? "Consulta las incidencias de tu cuenta" : results.getTotal() + (results.getTotal() == 1 ? " incidencia de tu cuenta" : " incidencias de tu cuenta")%></p>
+			<p><%=results == null ? (esAdmin ? "Busca incidencias por estado, cliente o tipo" : "Consulta las incidencias de tu cuenta") : results.getTotal() + (esAdmin ? (results.getTotal() == 1 ? " incidencia encontrada" : " incidencias encontradas") : (results.getTotal() == 1 ? " incidencia de tu cuenta" : " incidencias de tu cuenta"))%></p>
 		</div>
 	</div>
 	<% if (error != null) { %><p class="error-message"><%=error%></p><% } %>
 	<%@ include file="/private/incidencia/incidencia-search.jsp"%>
-	<div class="customer-notice">Como cliente, puedes consultar las incidencias asociadas a tu cuenta. Para modificar o eliminar una incidencia, contacta con soporte.</div>
+	<% if (!esAdmin) { %><div class="customer-notice">Como cliente, puedes consultar las incidencias asociadas a tu cuenta. Para modificar o eliminar una incidencia, contacta con soporte.</div><% } %>
 	<% if (results != null) { %>
 		<% if (results.getPage().isEmpty()) { %>
 			<div class="empty-state"><strong>No hay incidencias que coincidan</strong><p>Prueba con otros terminos o ajusta el periodo de busqueda.</p></div>

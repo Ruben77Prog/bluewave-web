@@ -2,8 +2,9 @@ package com.rps.bluewave.filter;
 
 import java.io.IOException;
 
-import com.rps.bluewave.Views;
+import com.rps.bluewave.util.Views;
 import com.ruben.bluewave.model.Cliente;
+import com.ruben.bluewave.model.EmpleadoDTO;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -21,12 +22,10 @@ public class AuthenticationFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-		Cliente cliente = null;
-		if (httpRequest.getSession(false) != null) {
-			cliente = (Cliente) httpRequest.getSession(false).getAttribute("usuario");
-		}
+		Object usuario = httpRequest.getSession(false) == null ? null
+				: httpRequest.getSession(false).getAttribute("usuario");
 
-		if (cliente == null) {
+		if (!(usuario instanceof Cliente) && !(usuario instanceof EmpleadoDTO)) {
 			httpResponse.sendRedirect(httpRequest.getContextPath() + Views.CLIENTE_LOGIN);
 			return;
 		}
